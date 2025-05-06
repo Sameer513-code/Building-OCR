@@ -1,5 +1,68 @@
 # Building-OCR
 
+This project uses a Convolutional Neural Network (CNN) to classify handwritten **math symbols** and **digits (0–9)** from grayscale images of size `100x100`.
+
+### 📊 Dataset Overview
+
+* **Total images**: 10,001
+* **Image size**: 100 x 100 pixels (grayscale)
+* **Classes**: Digits (0–9), Math operators (`add`, `sub`, `mul`, `div`, `eq`, `dec`), Variables (`x`, `y`, `z`)
+* **Max class**: `sub` → 655 images
+* **Min class**: `z` → 212 images
+* **Imbalance Ratio**: ≈ 3.09 (most common class has 3x more data than the least)
+
+---![download](https://github.com/user-attachments/assets/f57b9400-3c90-4c11-8aab-495371fc04ac)
+
+
+### 🧠 Model Architecture (CNN)
+
+We use a **Sequential CNN model** with multiple convolutional and pooling layers, followed by dense layers to classify the symbols.
+
+```python
+model = Sequential([
+    Conv2D(32, (3, 3), activation='relu', input_shape=(100, 100, 1)),
+    MaxPooling2D((2, 2)),
+    
+    Conv2D(64, (3, 3), activation='relu'),
+    MaxPooling2D((2, 2)),
+    
+    Flatten(),
+    Dense(128, activation='relu'),
+    Dense(num_classes, activation='softmax')
+])
+```
+
+#### 📌 Layer-by-Layer Explanation:
+
+| Layer                   | Description                                                                                                                |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Conv2D (32 filters)** | Extracts **local spatial features** using 3x3 kernels. It detects edges, curves, and textures in small areas of the image. |
+| **MaxPooling2D (2x2)**  | Reduces dimensionality by keeping only the **strongest feature activations** (like zooming out). Helps avoid overfitting.  |
+| **Conv2D (64 filters)** | Captures **more complex patterns** (e.g., parts of symbols, loops, intersections) with deeper filters.                     |
+| **MaxPooling2D**        | Again, shrinks feature maps to focus on the most important features.                                                       |
+| **Flatten**             | Converts 2D feature maps into a **1D vector** for input into dense layers.                                                 |
+| **Dense (128 units)**   | Fully connected layer that learns **abstract combinations** of the extracted features.                                     |
+| **Dense (Output)**      | Uses **softmax** to output class probabilities (one for each symbol).                                                      |
+
+---
+
+### ⚙️ Training Details
+
+* **Optimizer**: Adam
+* **Loss**: Sparse Categorical Crossentropy
+* **Epochs**: 30
+* **Batch size**: 32
+* **Train/Test Split**: 80/20
+
+---
+
+### 📈 Results
+
+* Final Train Accuracy: 95.93%
+* Final Validation Accuracy: 98.16%
+
+
+![download](https://github.com/user-attachments/assets/a0944345-8c14-448d-8a6e-2c72b6f5d442)
 
 ### Classification Report
 You'll see something like this:
