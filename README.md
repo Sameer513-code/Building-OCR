@@ -14,7 +14,7 @@ This project uses a Convolutional Neural Network (CNN) to classify handwritten *
 ---![download](https://github.com/user-attachments/assets/f57b9400-3c90-4c11-8aab-495371fc04ac)
 
 
-### 🧠 Model Architecture (CNN)
+### Model Architecture
 
 We use a **Sequential CNN model** with multiple convolutional and pooling layers, followed by dense layers to classify the symbols.
 
@@ -32,7 +32,7 @@ model = Sequential([
 ])
 ```
 
-#### 📌 Layer-by-Layer Explanation:
+#### Layer-by-Layer Explanation:
 
 | Layer                   | Description                                                                                                                |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -78,7 +78,7 @@ It’s a big table like this:
 | **3**     | 1   | 4  | 54 | 31 |
 | **8**     | 2   | 1  | 22 | 70 |
 
-🎯 What to Look For:
+What to Look For:
  - Diagonal values (↘) are correct predictions. Higher = better.
  - Off-diagonal values are misclassifications.
 <br>
@@ -86,7 +86,7 @@ Example Analysis: <br>
 If 31 “3”s were predicted as “8” → that’s a big confusion. <br>
 
 
-### 📈 Results
+### Results
 
 * Final Train Accuracy: 95.93%
 * Final Validation Accuracy: 98.16%
