@@ -14,6 +14,50 @@ This project uses a Convolutional Neural Network (CNN) to classify handwritten *
 ![download](https://github.com/user-attachments/assets/f57b9400-3c90-4c11-8aab-495371fc04ac)
 
 ---
+
+### 🔢 **Raw Data Point (From CSV)**
+
+The **input to the model** comes from a CSV file where each row represents a **100×100 grayscale image** of a math symbol that has been **flattened** into a single row of 10,000 pixel values.<br>
+<br>
+Each row in the CSV looks like this:
+
+```
+label, pixel_0, pixel_1, ..., pixel_9999
+3,     0,       0,       ..., 255
+```
+
+* `label`: The actual symbol class (e.g., `'3'`, `'+'`, `'x'`).
+* `pixel_0` to `pixel_9999`: Each is a grayscale value from 0 (black) to 255 (white).
+
+---
+
+ ### 🧼 **Preprocessing Steps**
+
+You apply these transformations before feeding into the CNN:
+
+1. **Label encoding**: Strings like `'3'` or `'add'` are converted to integers.
+2. **Normalization**: All pixel values are divided by 255.0 so they fall between `0` and `1`.
+3. **Reshape**: Each flattened image of shape `(10000,)` is reshaped to `(100, 100, 1)` to match CNN input:
+
+   * `100 × 100` is the image size
+   * `1` is the number of channels (grayscale)
+
+**single preprocessed image**:
+
+```python
+plt.imshow(features[0].reshape(100, 100), cmap='gray')
+plt.title("Example Input Image")
+plt.show()
+```
+This will show a black-and-white image of a digit/symbol—exactly how the model "sees" it.
+
+The model gets input in the shape:
+
+```python
+(batch_size, 100, 100, 1)
+```
+
+---
 ### Model Architecture
 
 We use a **Sequential CNN model** with multiple convolutional and pooling layers, followed by dense layers to classify the symbols.
