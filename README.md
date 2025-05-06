@@ -11,9 +11,9 @@ This project uses a Convolutional Neural Network (CNN) to classify handwritten *
 * **Min class**: `z` → 212 images
 * **Imbalance Ratio**: ≈ 3.09 (most common class has 3x more data than the least)
 
----![download](https://github.com/user-attachments/assets/f57b9400-3c90-4c11-8aab-495371fc04ac)
+![download](https://github.com/user-attachments/assets/f57b9400-3c90-4c11-8aab-495371fc04ac)
 
-
+---
 ### Model Architecture
 
 We use a **Sequential CNN model** with multiple convolutional and pooling layers, followed by dense layers to classify the symbols.
@@ -45,7 +45,6 @@ model = Sequential([
 | **Dense (Output)**      | Uses **softmax** to output class probabilities (one for each symbol).                                                      |
 
 ---
-
 ### ⚙️ Training Details
 
 * **Optimizer**: Adam
@@ -69,6 +68,7 @@ Example:<br>
 If Label: 3 has low *precision*, it means the model often thinks something is a 3 when it’s not.<br>
 If Label: 8 has low *recall*, the model misses a lot of actual 8s (e.g., it confuses them with 3s).<br>
 
+---
 ### Confusion Matrix
 It’s a big table like this:
 | True\Pred | +   | -  | 3  | 8  |
@@ -85,8 +85,8 @@ What to Look For:
 Example Analysis: <br>
 If 31 “3”s were predicted as “8” → that’s a big confusion. <br>
 
-
-### Results
+---
+### 📈 Results
 
 * Final Train Accuracy: 95.93%
 * Final Validation Accuracy: 98.16%
