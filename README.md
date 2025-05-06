@@ -55,15 +55,6 @@ model = Sequential([
 * **Train/Test Split**: 80/20
 
 ---
-
-### 📈 Results
-
-* Final Train Accuracy: 95.93%
-* Final Validation Accuracy: 98.16%
-
-
-![download](https://github.com/user-attachments/assets/a0944345-8c14-448d-8a6e-2c72b6f5d442)
-
 ### Classification Report
 You'll see something like this:
 | Term          | Simple Meaning                                         |
@@ -93,3 +84,13 @@ It’s a big table like this:
 <br>
 Example Analysis: <br>
 If 31 “3”s were predicted as “8” → that’s a big confusion. <br>
+
+
+### 📈 Results
+
+* Final Train Accuracy: 95.93%
+* Final Validation Accuracy: 98.16%
+
+
+![download](https://github.com/user-attachments/assets/a0944345-8c14-448d-8a6e-2c72b6f5d442)
+
