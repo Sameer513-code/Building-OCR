@@ -95,7 +95,7 @@ model = Sequential([
 * **Loss**: Sparse Categorical Crossentropy
 * **Epochs**: 30
 * **Batch size**: 32
-* **Train/Test Split**: 80/20
+* **Train/Validation Split**: 80/20
 
 ---
 ### Classification Report
@@ -135,6 +135,28 @@ If 31 “3”s were predicted as “8” → that’s a big confusion. <br>
 * Final Train Accuracy: 95.93%
 * Final Validation Accuracy: 98.16%
 
-
 ![download](https://github.com/user-attachments/assets/a0944345-8c14-448d-8a6e-2c72b6f5d442)
+
+---
+
+### 🚧 Limitations & Future Improvements
+
+#### 🔻 Current Limitations
+
+* A custom **UI was implemented** for drawing digits or math symbols, but the model trained from scratch (`best_model.h5`) often produces **incorrect predictions** when integrated with this interface. This is likely due to:
+
+  * Input variation between dataset images and drawn UI inputs.
+  * Limited generalization capacity of the trained model.
+* The model was trained on clean, preprocessed CSV images, which differ from real-world strokes drawn on a canvas.
+
+#### 🚀 Suggested Improvements
+
+* Replace or augment the current model with **pretrained OCR models** such as:
+
+  * **TrOCR** (Transformer-based OCR by Microsoft) for character-level recognition.
+  * **YOLOv5 or YOLOv8** for object detection-based segmentation of full handwritten equations.
+* Use **data augmentation or domain adaptation** to bridge the gap between training images and UI-drawn inputs.
+* Deploy the interface using platforms like **Streamlit Cloud** or **Hugging Face Spaces** for live testing with more flexible model backends.
+
+---
 
